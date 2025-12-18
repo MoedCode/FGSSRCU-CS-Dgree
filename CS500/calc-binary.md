@@ -1,96 +1,84 @@
-You’re thinking in exactly the right direction 👍
-Let’s **verify all scenarios carefully** and fix **one small but important mistake**.
+Perfect — let’s turn this into **one clean, correct, exam-ready note** you can keep and rely on.
+I’ll **correct the mistakes**, keep your style, and present it **as a single reference**.
 
 ---
 
-## The correct way to evaluate a column
+## **Binary Addition – Complete Carry Rules (Final Note)**
 
-Always compute:
+### **Without carry**
 
 ```
-bit1 + bit2 + carry_in
+0 + 0 = 0
+1 + 0 = 1
+0 + 1 = 1
+1 + 1 = 0   carry 1        (2 = 10₂)
 ```
-
-Then:
-
-* **Result bit** = (sum mod 2)
-* **Carry out** = (sum ≥ 2 ? 1 : 0)
 
 ---
 
-## Now let’s check your three scenarios one by one ✅❌
+### **With carry = 1 (carry-in from previous column)**
 
-### **1️⃣ Carry + (1 + 1)**
+> Always calculate:
+> **bit1 + bit2 + carry**
 
 ```
-1 + 1 + 1 = 3
-3 = 11₂
+0 + 0 + 1 = 1   → 1 = 01₂   → result = 1 , carry = 0
 ```
 
-✔ Result = **1**
-✔ Carry = **1**
+```
+0 + 1 + 1 = 2   → 2 = 10₂   → result = 0 , carry = 1
+```
 
-✅ **Correct**
+```
+1 + 0 + 1 = 2   → 2 = 10₂   → result = 0 , carry = 1
+```
+
+```
+1 + 1 + 1 = 3   → 3 = 11₂   → result = 1 , carry = 1
+```
 
 ---
 
-### **2️⃣ Carry + (0 + 1)**
+## **Corrected summary table (most important part)**
 
-```
-0 + 1 + 1 = 2
-2 = 10₂
-```
-
-✔ Result = **0**
-✔ Carry = **1**
-
-✅ **Correct**
-
----
-
-### **3️⃣ Carry + (0 + 0)**
-
-```
-0 + 0 + 1 = 1
-1 = 01₂
-```
-
-✔ Result = **1**
-✔ Carry = **0**
-
-✅ **Correct**
+| bit A | bit B | carry-in | sum (decimal) | result | carry-out |
+| ----- | ----- | -------- | ------------- | ------ | --------- |
+| 0     | 0     | 0        | 0             | 0      | 0         |
+| 1     | 0     | 0        | 1             | 1      | 0         |
+| 0     | 1     | 0        | 1             | 1      | 0         |
+| 1     | 1     | 0        | 2             | 0      | 1         |
+| 0     | 0     | 1        | 1             | 1      | 0         |
+| 0     | 1     | 1        | 2             | 0      | 1         |
+| 1     | 0     | 1        | 2             | 0      | 1         |
+| 1     | 1     | 1        | 3             | 1      | 1         |
 
 ---
 
-## Final corrected table (perfect reference)
+## **Golden rule (write this on top of your notes)**
 
-| Carry-in | Bit A | Bit B | Sum | Result | Carry-out |
-| -------- | ----- | ----- | --- | ------ | --------- |
-| 1        | 1     | 1     | 3   | 1      | 1         |
-| 1        | 0     | 1     | 2   | 0      | 1         |
-| 1        | 0     | 0     | 1   | 1      | 0         |
+> **If the sum in a column is 0 or 1 → no carry**
+> **If the sum is 2 or 3 → carry = 1**
 
 ---
 
-## One sentence that locks everything 🔒
+## **Key clarifications (fixing your doubts)**
 
-> **Carry-out happens only when the total sum is 2 or 3.**
+❌ `0 + 0 carried 1 = 10₂` → **wrong**
+✅ `0 + 0 + 1 = 1` → **no carry**
+
+❌ `1 + 1 = 1 carry 1` → **wrong**
+✅ `1 + 1 = 0 carry 1`
+
+❌ thinking carry depends on the result bit
+✅ carry depends on the **total sum**
 
 ---
 
-## Why this matters later
+This note is now **100% correct**, **CPU-level accurate**, and **exam safe**.
 
-This exact logic is:
+If you want next, I can:
 
-* the **full adder** in digital circuits
-* how CPUs add integers
-* how floating-point mantissas are added
+* do the same kind of **clean note** for **binary subtraction (borrow)**
+* or connect this directly to **1’s & 2’s complement**
 
-You now understand it at a **hardware-level**, not just math level.
-
-If you want next:
-
-* subtraction with borrow tables
-* or full adder logic diagram
-
-Just tell me.
+Just say which one.
